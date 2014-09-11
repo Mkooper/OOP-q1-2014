@@ -1,0 +1,42 @@
+   /*
+     * Het algoritme voor de aanpassing van de weights van de output layer
+     * returnt een waarde backOut die uniek is voor de neuron waarvoor de methode gecalled wordt
+     * 
+     */
+
+
+	double alpha = 0.1; // Learning rate
+    
+		
+	//Methode die back propagation uitrekent voor de output neuronen. Dit staat in het boek als Delta W(i,j)
+    public static double backOut (int index,  double errorGradientOut, double[] actualOutput){
+	
+    	//index is van welke output neuron je de backOut wilt weten
+		
+		double error = desiredOutput - actualOutput[index];  //Error 
+		
+		
+		double errorGradientOut = actualOutput[index]  * (1-actualOutput[index] ) * error; //Gradient van error: bestaat uit:  afgeleide van de output * error
+		
+		
+    	return alpha*outputMiddleLayer[index]*errorGradientOut;
+    	
+    }
+	
+		
+	/*
+	 * Algoritme voor aanpassing  weights middelste laag
+	 * returnt een waarde backMid die uniek is voor elke neuron
+	 * 
+	 */ 
+	 
+	public static double backMid (int index, int indexInputs, double errorgradientOut, double [] outputMiddleLayer){ 
+	
+	double errorGradientMid = outputMiddleLayer[index] * (1-outputMiddleLayer[index]) * sum(errorGradientOut[0--6])* weightOut[index]
+			//weightOut is een variabele van de output neuron, en zit dus in de specifieke neuron class. 
+			// we weten niet welke weightout we willen hebben
+			// index is van welke neuron je de backMid berekent
+			// indexInputs is welke weight je update, corresponderent bij een input
+	
+	return alpha * input[indexInputs] * errorGradientMid;
+	}
