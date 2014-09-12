@@ -42,5 +42,5 @@ public class Punt {
 	public static boolean equals (Punt punt){
 		return (Punt.x == Punt.y);
 	}
-	
+	//er scheelt hier iets aan
 }
