@@ -56,9 +56,11 @@ public class Opdracht3_1 {
 	}
 	
 	public static void verwissel (int[] seq){
+		if(seq.length > 0){
 		int temp = seq[1];
 		seq[1] = seq[0];
 		seq[0] = temp;
+		}
 	}
 	
 	

@@ -7,7 +7,7 @@ private int aantal;
 	public StringLijst(int n){
 		aantal = 0;
 		
-		if(n<0)
+		if(n > 0)
 			 element = new String[n];
 		else
 			element = new String[0];
@@ -15,7 +15,7 @@ private int aantal;
 	}
 
 	public void add(String el){
-		if(aantal<element.length){
+		if(aantal < element.length){
 			element[aantal] = el;
 			aantal++;
 		}
@@ -23,7 +23,7 @@ private int aantal;
 	
 	public String get(int i){
 		if(0 <= i && i < aantal)
-			return element[aantal];
+			return element[i];
 		else
 			return null;
 	}
@@ -56,23 +56,32 @@ private int aantal;
 	}
 	
 	public boolean equals(Object other){
-		boolean res = false;
+		
+		
 		if(other instanceof StringLijst){
 			StringLijst that = (StringLijst) other;
-			int i = 0;
-			while(this.element[i].equals(that.element[i]) && i < aantal)
-				i++;
-			res = (i == aantal);
+			if(aantal == that.getSize()){
+				
+				for(int i = 0; i < aantal ; i++){
+					if(!this.element[i].equals(that.element[i]))
+						return false;
+				}
+				return true;
+			} 
 		}
-		return res;
+		return false;
 	}
 	
 	public String toString(){
-		String res  = "<Stringlijst(";
+		String res  = "<StringLijst[";
+		if(aantal > 0){
 		for (int i = 0; i < element.length; i++) {
-			res = res + element[i] + ",";
+			res = res + element[i];
+			if(i < element.length - 1)
+				res = res + ",";
 		}
-		res = res + ")>";
+		}
+		res = res + "]>";
 		return res;
 	}
 }

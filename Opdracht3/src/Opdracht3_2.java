@@ -22,6 +22,7 @@ public class Opdracht3_2 {
 		System.out.print("de priemgetallen tot 20 zijn: ");
 		
 		Opdracht3_1.println(priemgetallenTot(20));
+		System.out.print(-4 % 4);
 		
 		
 	}
@@ -72,10 +73,12 @@ public class Opdracht3_2 {
 	 * @return
 	 */
 	public static boolean bevat (int[] seq, int el){
-		int i = 0;
-		while (seq[i] != el && i < seq.length)
-			i++;
-		return (seq[i] == el);
+			
+		for (int j = 0; j < seq.length; j++) {
+			if(seq[j]==el)
+				return true;
+		}
+		return false;
 		
 	}
 	
@@ -86,16 +89,18 @@ public class Opdracht3_2 {
 	 */
 	public static boolean isPriem(int el){
 		
-		if(el%2==0)
+		if(el == 1)
 			return false;
 		
-		for(int i = 3 ;  i < el ; i+=2){
+		
+			for(int i = 2 ;  i < Math.abs(el) ; i++){
 			
-			if(el%i ==0)
-	            return false;
-			
+			if(el % i == 0)
+				return false;
 			}
 			return true;
+			
+		
 	}
 	
 	/**
@@ -109,7 +114,7 @@ public class Opdracht3_2 {
 		for(int i = 0; i < seq.length; i++){
 			if(isPriem(seq[i]) == true)
 				tel++;
-		} //zijn deze accolades van de for loop nodig?
+		} 											//zijn deze accolades van de for loop nodig?
 		return tel;
 	}
 	

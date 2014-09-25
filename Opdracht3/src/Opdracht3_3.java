@@ -25,6 +25,7 @@ public class Opdracht3_3 {
 		
 		
 		sLijst.equals(tLijst);
-		
+		System.out.println(sLijst.equals(sLijst));
+		System.out.println(sLijst.toString());
 	}
 }
