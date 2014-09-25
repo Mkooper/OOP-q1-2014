@@ -1,8 +1,8 @@
 
 public class Punt {
 
-	static double x;
-	static double y;
+	private double x;
+	private double y;
 	
 	public Punt (double xCoordinaat, double yCoordinaat){
 		x = xCoordinaat;
@@ -10,37 +10,46 @@ public class Punt {
 	}
 	
 	//methode 1
-	public static double getX(){
+	public double getX(){
 		
 		return x;
 	}
 	
 	//methode 2
-	public static double getY(){
+	public double getY(){
 		return y;
 	}
 	
 	//tostring methode
 	public String toString() {
-		String res  = "<Punt(";    //waarom niet in 1 regel?
+		String res  = "<Punt(";    //String res wordt gebruikt om het datatype tot string te converteren zonder externe methode
 		res = res + x + "," + y + ")>";
 		return res;
 	}
 	
 	//transleer functie
-	public static void transleer (double dx, double dy){
-		x = + dx;
+	public void transleer (double dx, double dy){
+		x = x + dx;
 		y = y + dy;
 	};
 
 	
-	//asstand IS DIT GOED?
-	public static double afstand (Punt punt){
-		return Punt.x - Punt.y;
+	// Afstand gebruikt de methode uit Opdracht2_1 en berekent een pythagoriaanse afstand.
+	public double afstand (Punt that){
+		return Opdracht2_1.f1((this.x - that.x)*(this.x - that.x) + (this.y - that.y)*(this.y - that.y));
 	}
 	
-	public static boolean equals (Punt punt){
-		return (Punt.x == Punt.y);
+	//het gelijkt aan object. 
+	public boolean equals (Object other){
+		
+		if(other instanceof Punt) {
+			Punt that = (Punt) other;
+		return this.x == that.x && this.y == that.y;
+			
+		} else{
+			return false;
+		}
+		
 	}
-	//er scheelt hier iets aan
+	
 }
